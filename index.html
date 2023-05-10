@@ -14,7 +14,7 @@
 
     <input
       type="range"
-      name="password-lenght"
+      name="password-length"
       id="password-length"
       value="16"
       min="4"
@@ -24,13 +24,15 @@
     <button>Copiar senha</button>
 
     <script>
+      let passwordLength = 16;
+
       function generatePassword() {
         const chars =
           "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ123456789?!@&*()[]{}";
 
         let password = "";
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < passwordLength; i++) {
           const randomNumber = Math.floor(Math.random() * chars.length);
           password += chars.substring(randomNumber, randomNumber + 1);
         }
@@ -38,9 +40,14 @@
         const intputEl = document.querySelector("#password");
         intputEl.value = password;
 
-        console.log(password);
         return password;
       }
+
+      const passwordLengthEl = document.querySelector("#password-length");
+      passwordLengthEl.addEventListener("input", function () {
+        passwordLength = passwordLengthEl.value;
+        generatePassword();
+      });
 
       generatePassword();
     </script>
