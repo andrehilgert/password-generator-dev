@@ -35,6 +35,9 @@
           password += chars.substring(randomNumber, randomNumber + 1);
         }
 
+        const intputEl = document.querySelector("#password");
+        intputEl.value = password;
+
         console.log(password);
         return password;
       }
