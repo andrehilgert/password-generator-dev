@@ -128,8 +128,13 @@
       }
 
       const passwordLengthEl = document.querySelector("#password-length");
+      const passwordLengthTextEl = document.querySelector(
+        "#password-length-text"
+      );
+
       passwordLengthEl.addEventListener("input", function () {
         passwordLength = passwordLengthEl.value;
+        passwordLengthTextEl.innerText = passwordLength;
         generatePassword();
       });
 
