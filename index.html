@@ -91,6 +91,9 @@
       const upperCaseCheckEl = document.querySelector("#uppercase-check");
       const numberCheckEl = document.querySelector("#number-check");
       const symbolCheckEl = document.querySelector("#symbol-check");
+      const securityIndicatorBarEl = document.querySelector(
+        "#security-indicator-bar"
+      );
 
       let passwordLength = 16;
 
@@ -118,9 +121,16 @@
           const randomNumber = Math.floor(Math.random() * chars.length);
           password += chars.substring(randomNumber, randomNumber + 1);
         }
+
         intputEl.value = password;
 
-        return password;
+        calculateQuality();
+      }
+
+      function calculateQuality() {
+        const percent = Math.round((passwordLength / 64) * 100);
+
+        securityIndicatorBarEl.style.width = `${percent}%`;
       }
 
       function copy() {
